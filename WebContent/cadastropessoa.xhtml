@@ -31,6 +31,12 @@
 
 			<p:commandButton value="Incluir" update="panel dataTable" process="@this panel"
 				actionListener="#{pessoaController.incluir}" icon="ui-icon-check" />
+				
+				<p:commandButton value="Alterar" update="panel dataTable" process="@this panel"
+				actionListener="#{pessoaController.alterar}" icon="ui-icon-check" />
+				
+				<p:commandButton value="Excluir" update="panel dataTable" process="@this panel"
+				actionListener="#{pessoaController.remover}" icon="ui-icon-check" />
 
 			<p:commandButton value="Limpar" update="panel" process="@this"
 				actionListener="#{pessoaController.limpar}" icon="ui-icon-check" />
@@ -43,7 +49,13 @@
 			</p:column>
 
 			<p:column headerText="Nome">
-				<h:outputText value="#{pessoa.nome}" />
+				<p:commandLink value="#{pessoa.nome}"
+				process="@this"
+				update="@form:panel" >
+				<f:setPropertyActionListener  
+				 value="#{pessoa}"
+				 target="#{pessoaController.pessoa}"/> 
+				</p:commandLink>
 			</p:column>
 			
 			<p:column headerText="Endereco">

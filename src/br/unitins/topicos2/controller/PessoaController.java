@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import br.unitins.topicos2.factory.JPAFactory;
 import br.unitins.topicos2.model.Pessoa;
 
 @Named
@@ -19,22 +20,56 @@ public class PessoaController implements Serializable {
 	private static final long serialVersionUID = 8637843622408548669L;
 	
 	
-	
-	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Topicos2");
-	private EntityManager em = emf.createEntityManager();
+	private EntityManager em = null;
 	
 	private Pessoa pessoa= null;
 	private List<Pessoa> listaPessoa= null;
 	
+	private EntityManager getEntityManager() {
+			if(em == null)
+			   em = JPAFactory.getEntityManager();
+			return em;
+	}
+	
+	
 	public void incluir() {
 		
-		System.out.println("Incluir");
-		em.getTransaction().begin();
-		em.persist(getPessoa());
-		em.getTransaction().commit();
+		
+		getEntityManager().getTransaction().begin();
+		
+		// metodo para incluir no BD
+		getEntityManager().persist(getPessoa());
+		
+		getEntityManager().getTransaction().commit();
 		limpar();
-		System.out.println("Feito");
+		System.out.println("Incluiu");
 	}
+	
+	public void alterar() {
+		
+		System.out.println("alterar");
+		getEntityManager().getTransaction().begin();
+		
+		// metodo para alterar no BD
+		getEntityManager().merge(getPessoa());
+		limpar();
+		getEntityManager().getTransaction().commit();
+		System.out.println("Alterou");
+	}
+	
+	public void remover() {
+		
+		getEntityManager().getTransaction().begin();
+		
+		// metodo para remover no BD
+		getEntityManager().remove(getPessoa());
+		
+		getEntityManager().getTransaction().commit();
+		limpar();
+		System.out.println("Removeu");
+	}
+	
+	
 	
 		public void limpar() {
 		
@@ -48,7 +83,7 @@ public class PessoaController implements Serializable {
 		public List<Pessoa> getListaPessoa() {
 			
 			if(listaPessoa == null) {
-			   listaPessoa = em.createQuery("Select p From Pessoa p ").getResultList();
+			   listaPessoa = getEntityManager().createQuery("Select p From Pessoa p Order by p.id desc ").getResultList();
 			   if(listaPessoa == null)
 				   listaPessoa = new ArrayList<Pessoa>();
 			}
