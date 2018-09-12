@@ -15,17 +15,17 @@
 
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="itNome" value="Nome:" />
-				<p:inputText id="itNome" value="#{pessoaController.pessoa.nome}"
+				<p:inputText id="itNome" value="#{pessoaController.entity.nome}"
 					required="true" />
 
 
 				<p:outputLabel for="itEndereco" value="Endereco:" />
 				<p:inputText id="itEndereco"
-					value="#{pessoaController.pessoa.endereco}" />
+					value="#{pessoaController.entity.endereco}" />
 
 
 				<p:outputLabel for="itEmail" value="Email:" />
-				<p:inputText id="itEmail" value="#{pessoaController.pessoa.email}" />
+				<p:inputText id="itEmail" value="#{pessoaController.entity.email}" />
 
 			</h:panelGrid>
 
@@ -54,7 +54,7 @@
 				update="@form:panel" >
 				<f:setPropertyActionListener  
 				 value="#{pessoa}"
-				 target="#{pessoaController.pessoa}"/> 
+				 target="#{pessoaController.entity}"/> 
 				</p:commandLink>
 			</p:column>
 			

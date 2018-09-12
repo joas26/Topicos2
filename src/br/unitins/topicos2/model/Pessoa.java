@@ -1,25 +1,19 @@
 package br.unitins.topicos2.model;
 
-import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-public class Pessoa implements Serializable {
+public class Pessoa extends DefaultEntity<Pessoa> {
 
 	private static final long serialVersionUID = 842608579949032521L;
 
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) /* id autoincrement*/
-	private Integer id;
 	
 	@Transient
 	private Date dataNascimento;
@@ -29,7 +23,7 @@ public class Pessoa implements Serializable {
 	private String email;
 	
 	public Pessoa(){
-		//default
+		
 	}
 	
 
@@ -40,16 +34,6 @@ public class Pessoa implements Serializable {
 		this.email = email;
 	}
 
-
-
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
