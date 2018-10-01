@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+
 import br.unitins.topicos2.model.Pessoa;
 import br.unitins.topicos2.repository.PessoaRepository;
 
