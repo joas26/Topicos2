@@ -50,10 +50,15 @@
 
 
 							<h:panelGroup>
-								<p:outputLabel value="Sexo:" />
-								<p:inputText value="#{instrutorController.entity.sexo}">
+								<p:outputLabel value="Sexo:" for="sexo" />
+								<p:selectOneMenu id="sexo"
+									value="#{instrutorController.entity.sexo}">
+									<f:selectItem itemlabel="Selecione o Sexo" />
+									<f:selectItems value="#{instrutorController.sexos}" var="sexo"
+										itemLabel="#{sexo}" itemValue="#{sexo}" />
 
-								</p:inputText>
+								</p:selectOneMenu>
+
 							</h:panelGroup>
 
 							<h:panelGroup>
@@ -70,17 +75,68 @@
 							</h:panelGroup>
 
 							<h:panelGroup>
-								<p:outputLabel value="Endereco:" />
-								<p:inputText value="#{instrutorController.entity.endereco}">
-
-								</p:inputText>
+								<p:outputLabel value="Endereco-" />
+								<p:outputLabel value=" CEP:" />
+								<p:inputText value="#{enderecoController.entity.cep}" />
 							</h:panelGroup>
+
+							<h:panelGroup>
+
+								<p:outputLabel value="logradouro:" />
+								<p:inputText value="#{enderecoController.entity.logradouro}" />
+
+							</h:panelGroup>
+
+							<h:panelGroup>
+
+								<p:outputLabel value="Numero:" />
+								<p:inputText value="#{enderecoController.entity.numero}" />
+
+							</h:panelGroup>
+							<h:panelGroup>
+
+								<p:outputLabel value="Complemento:" />
+								<p:inputText value="#{enderecoController.entity.complemento}" />
+							</h:panelGroup>
+
+
+
+							<h:panelGroup>
+								<p:outputLabel value="Cidade:" />
+								<p:inputText value="#{enderecoController.entity.cidade}" />
+							</h:panelGroup>
+							<h:panelGroup>
+								<p:outputLabel value="Estado:" />
+								<p:inputText value="#{enderecoController.entity.estado}" />
+
+
+
+							</h:panelGroup>
+
+
+
+
+
 
 							<h:panelGroup>
 								<p:outputLabel value="Email:" />
 								<p:inputText id="itEmail"
 									value="#{instrutorController.entity.email}" />
 							</h:panelGroup>
+
+							<h:panelGroup>
+								<p:outputLabel value="Perfil:" for="perfil" />
+								<p:selectOneMenu id="perfil"
+									value="#{instrutorController.entity.perfil}">
+									<f:selectItem itemlabel="Selecione o perfil" />
+									<f:selectItems value="#{instrutorController.perfis}"
+										var="perfil" itemLabel="#{perfil}" itemValue="#{perfil}" />
+
+								</p:selectOneMenu>
+
+							</h:panelGroup>
+
+
 
 							<h:panelGroup>
 								<p:outputLabel value="Senha:" />
@@ -90,17 +146,7 @@
 
 
 
-							<h:panelGroup>
-								<p:outputLabel value="Perfil:" for="perfil" />
-								<p:selectOneMenu id="perfil"
-									value="#{instrutorcontroller.entity.perfil}">
-									<f:selectItem itemlabel="Selecione o perfil" />
-									<f:selectItems value="#{instrutorcontroller.perfis}"
-										var="perfil" itemLabel="#{perfil}" itemValue="#{perfil}" />
 
-								</p:selectOneMenu>
-
-							</h:panelGroup>
 
 							<p:spacer />
 						</p:panelGrid>
@@ -146,7 +192,7 @@
 			</p:panel>
 			<p:spacer />
 			<p:dialog header="Modal Dialog" widgetVar="dlg" modal="true"
-				height="400">
+				height="500">
 				<h:form>
 					<p:inputText id="itPesquisa"
 						value="#{instrutorController.pesquisa}" />
@@ -198,19 +244,63 @@
 							</p:column>
 
 
-							<p:column headerText="Endereço">
-								<h:outputText value="#{instrutor.endereco}" />
+							<p:column headerText="Endereco">
+								<p:commandLink for="itEndereco" value="	Visualizar"
+									onclick="PF('dlgEndereco').show();" process="@this"
+									style="color:blue; text-decoration: underline;" />
+
 							</p:column>
 
-							<p:column headerText="Perfil">
-								<h:outputText value="#{instrutor.perfil}" />
-							</p:column>
+
 
 
 						</p:dataTable>
 					</h:form>
 				</p:panel>
 			</p:dialog>
+
+
+			<p:dialog header="Modal Dialog" widgetVar="dlgEndereco" modal="true"
+				height="400">
+
+				<p:dataTable styleClass="box-primary" var="endereco"
+					value="#{enderecoController.listaEndereco}">
+					<f:facet name="header">
+						<h:outputText value="Endereco" />
+					</f:facet>
+					<p:column headerText="CEP">
+						<h:outputText value="#{instrutor.endereco.cep}" />
+					</p:column>
+
+
+					<p:column headerText="Logradouro">
+						<h:outputText value="#{intrutor.endereco.logradouro}" />
+					</p:column>
+
+					<p:column headerText="Numero">
+						<h:outputText value="#{endereco.numero}" />
+
+					</p:column>
+
+					<p:column headerText="Complemento">
+						<h:outputText value="#{endereco.complemento}" />
+					</p:column>
+
+					<p:column headerText="Cidade">
+						<h:outputText value="#{endereco.cidade}" />
+					</p:column>
+
+					<p:column headerText="Estado">
+						<h:outputText value="#{endereco.estado}" />
+					</p:column>
+
+				</p:dataTable>
+
+
+
+			</p:dialog>
+
+
 		</div>
 	</ui:define>
 	<ui:define name="rodape">

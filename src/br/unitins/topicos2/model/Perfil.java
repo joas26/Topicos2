@@ -10,8 +10,6 @@ public enum Perfil {
 	INSTRUTOR, ALUNO, ADMINISTRADOR;
 
 
-	
-	
 }
 	
 

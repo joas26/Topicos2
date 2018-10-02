@@ -26,7 +26,7 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 
 	private String nome;
 
-	private char sexo;
+	private Sexo sexo;
 	
 	@Transient
 	private Date dataNascimento;
@@ -60,8 +60,17 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 	}
 
 
+	@Enumerated(EnumType.STRING)
+	public Sexo getSexo() {
+		return sexo;
+	}
 
-	public Instrutor(String cpf, String nome, char sexo, Date dataNascimento, String telefone, String email,
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+
+	public Instrutor(String cpf, String nome, Sexo sexo, Date dataNascimento, String telefone, String email,
 			String senha, Endereco endereco, Perfil perfil) {
 		super();
 		this.cpf = cpf;
@@ -74,6 +83,7 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 		this.endereco = endereco;
 		this.perfil = perfil;
 	}
+
 
 	public String getCpf() {
 		return cpf;
@@ -91,13 +101,7 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 		this.nome = nome;
 	}
 
-	public char getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
-	}
+	
 
 	public Date getDataNascimento() {
 		return dataNascimento;

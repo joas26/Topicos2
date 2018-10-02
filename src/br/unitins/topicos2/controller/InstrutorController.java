@@ -9,8 +9,10 @@ import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.unitins.topicos2.model.Endereco;
 import br.unitins.topicos2.model.Instrutor;
 import br.unitins.topicos2.model.Perfil;
+import br.unitins.topicos2.model.Sexo;
 import br.unitins.topicos2.repository.InstrutorRepository;
 
 @Named
@@ -26,18 +28,23 @@ public class InstrutorController extends Controller<Instrutor> {
 	
 	private List<Instrutor> listaInstrutor = null;
 	
+	private Endereco endereco;
+	
 	private List<Perfil> perfis = null;
+	
+	private List<Sexo> sexos = null;
 
 	public Instrutor getEntity() {
 		if (entity == null)
 			entity = new Instrutor();
+			new Endereco();
 		return entity;
 	}
 
 	@PostConstruct
 	public void inicializar() {
 		this.perfis = Arrays.asList(Perfil.values());
-		
+		this.sexos = Arrays.asList(Sexo.values());
 	}
 	
 	@Override
@@ -65,6 +72,10 @@ public class InstrutorController extends Controller<Instrutor> {
 
 	public List<Perfil> getPerfis() {
 		return perfis;
+	}
+	
+	public List<Sexo> getSexos() {
+		return sexos;
 	}
 
 	public String getPesquisa() {
