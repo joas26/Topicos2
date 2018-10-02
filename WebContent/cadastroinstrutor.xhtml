@@ -68,7 +68,7 @@
 
 								</p:inputText>
 							</h:panelGroup>
-							
+
 							<h:panelGroup>
 								<p:outputLabel value="Endereco:" />
 								<p:inputText value="#{instrutorController.entity.endereco}">
@@ -88,13 +88,18 @@
 									value="#{instrutorController.entity.senha}" />
 							</h:panelGroup>
 
-							
-							
-							<h:panelGroup>
-								<p:outputLabel value="Perfil:" />
-								<p:inputText value="#{instrutorController.entity.perfil}">
 
-								</p:inputText>
+
+							<h:panelGroup>
+								<p:outputLabel value="Perfil:" for="perfil" />
+								<p:selectOneMenu id="perfil"
+									value="#{instrutorcontroller.entity.perfil}">
+									<f:selectItem itemlabel="Selecione o perfil" />
+									<f:selectItems value="#{instrutorcontroller.perfis}"
+										var="perfil" itemLabel="#{perfil}" itemValue="#{perfil}" />
+
+								</p:selectOneMenu>
+
 							</h:panelGroup>
 
 							<p:spacer />

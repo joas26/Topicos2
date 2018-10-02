@@ -1,12 +1,16 @@
 package br.unitins.topicos2.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import br.unitins.topicos2.model.Instrutor;
+import br.unitins.topicos2.model.Perfil;
 import br.unitins.topicos2.repository.InstrutorRepository;
 
 @Named
@@ -21,6 +25,8 @@ public class InstrutorController extends Controller<Instrutor> {
 	private String pesquisa;
 	
 	private List<Instrutor> listaInstrutor = null;
+	
+	private List<Perfil> perfis = null;
 
 	public Instrutor getEntity() {
 		if (entity == null)
@@ -28,12 +34,20 @@ public class InstrutorController extends Controller<Instrutor> {
 		return entity;
 	}
 
+	@PostConstruct
+	public void inicializar() {
+		this.perfis = Arrays.asList(Perfil.values());
+		
+	}
+	
 	@Override
 	public void limpar() {
 		setEntity(null);
 		listaInstrutor = null;
 		
 	}
+	
+	
 	
 	public void pesquisar() {
 		InstrutorRepository repository = new InstrutorRepository(getEntityManager());
@@ -48,7 +62,10 @@ public class InstrutorController extends Controller<Instrutor> {
 		return listaInstrutor;
 	}
 
-	
+
+	public List<Perfil> getPerfis() {
+		return perfis;
+	}
 
 	public String getPesquisa() {
 		return pesquisa;

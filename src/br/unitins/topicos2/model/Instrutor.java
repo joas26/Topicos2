@@ -1,8 +1,17 @@
 package br.unitins.topicos2.model;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
 import javax.persistence.Transient;
 
 @Entity
@@ -29,12 +38,28 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 	private String senha;
 
 	private Endereco endereco;
-
+	
+	
 	private Perfil perfil;
+	
 
 	public Instrutor() {
 
+
 	}
+
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+
+
+	@Enumerated(EnumType.STRING)
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+
 
 	public Instrutor(String cpf, String nome, char sexo, Date dataNascimento, String telefone, String email,
 			String senha, Endereco endereco, Perfil perfil) {
@@ -114,12 +139,5 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 		this.endereco = endereco;
 	}
 
-	public Perfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
-	}
 
 }
