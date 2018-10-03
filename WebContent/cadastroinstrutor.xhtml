@@ -19,7 +19,7 @@
 		<div style="position: absolute; top: 100px; left: 80%">
 			<p:growl autoUpdate="true" />
 		</div>
-		<h2 class="align-center">.: Cadastro de Instrutor :.</h2>
+		<h2 class="align-center">.: Cadastro de instrutors :.</h2>
 		<div class="ui-g-12">
 			<p:panel styleClass="card no-border" toggleable="true"
 				toggleSpeed="300">
@@ -44,9 +44,17 @@
 
 							<h:panelGroup>
 								<p:outputLabel value="CPF:" />
-								<p:inputText value="#{instrutorController.entity.cpf}">
-								</p:inputText>
+								<p:inputText id="itCpf"
+									value="#{instrutorController.entity.cpf}" />
 							</h:panelGroup>
+
+
+							<h:panelGroup>
+								<p:outputLabel value="Data de Nascimento:" />
+								<p:calendar value="#{instrutorController.entity.dataNascimento}"
+									pattern="dd/MM/yyyy" mask="true" locale="pt_BR" />
+							</h:panelGroup>
+
 
 
 							<h:panelGroup>
@@ -62,12 +70,6 @@
 							</h:panelGroup>
 
 							<h:panelGroup>
-								<p:outputLabel value="Data de Nascimento:" />
-								<p:calendar value="#{instrutorController.entity.dataNascimento}"
-									pattern="dd/MM/yyyy" mask="true" locale="pt_BR" />
-							</h:panelGroup>
-
-							<h:panelGroup>
 								<p:outputLabel value="Telefone:" />
 								<p:inputText value="#{instrutorController.entity.telefone}">
 
@@ -77,44 +79,41 @@
 							<h:panelGroup>
 								<p:outputLabel value="Endereco-" />
 								<p:outputLabel value=" CEP:" />
-								<p:inputText value="#{enderecoController.entity.cep}" />
+								<p:inputText value="#{instrutorController.entity.cep}" />
 							</h:panelGroup>
 
 							<h:panelGroup>
 
 								<p:outputLabel value="logradouro:" />
-								<p:inputText value="#{enderecoController.entity.logradouro}" />
+								<p:inputText value="#{instrutorController.entity.logradouro}" />
 
 							</h:panelGroup>
 
 							<h:panelGroup>
 
 								<p:outputLabel value="Numero:" />
-								<p:inputText value="#{enderecoController.entity.numero}" />
+								<p:inputText value="#{instrutorController.entity.numero}" />
 
 							</h:panelGroup>
 							<h:panelGroup>
 
 								<p:outputLabel value="Complemento:" />
-								<p:inputText value="#{enderecoController.entity.complemento}" />
+								<p:inputText value="#{instrutorController.entity.complemento}" />
 							</h:panelGroup>
 
 
 
 							<h:panelGroup>
 								<p:outputLabel value="Cidade:" />
-								<p:inputText value="#{enderecoController.entity.cidade}" />
+								<p:inputText value="#{instrutorController.entity.cidade}" />
 							</h:panelGroup>
 							<h:panelGroup>
 								<p:outputLabel value="Estado:" />
-								<p:inputText value="#{enderecoController.entity.estado}" />
+								<p:inputText value="#{instrutorController.entity.estado}" />
 
 
 
 							</h:panelGroup>
-
-
-
 
 
 
@@ -123,31 +122,12 @@
 								<p:inputText id="itEmail"
 									value="#{instrutorController.entity.email}" />
 							</h:panelGroup>
-
-							<h:panelGroup>
-								<p:outputLabel value="Perfil:" for="perfil" />
-								<p:selectOneMenu id="perfil"
-									value="#{instrutorController.entity.perfil}">
-									<f:selectItem itemlabel="Selecione o perfil" />
-									<f:selectItems value="#{instrutorController.perfis}"
-										var="perfil" itemLabel="#{perfil}" itemValue="#{perfil}" />
-
-								</p:selectOneMenu>
-
-							</h:panelGroup>
-
-
-
 							<h:panelGroup>
 								<p:outputLabel value="Senha:" />
-								<p:inputText id="itSenha"
-									value="#{instrutorController.entity.senha}" />
+								<p:inputText value="#{instrutorController.entity.senha}">
+
+								</p:inputText>
 							</h:panelGroup>
-
-
-
-
-
 							<p:spacer />
 						</p:panelGrid>
 
@@ -181,18 +161,16 @@
 						</p:commandButton>
 
 						<p:commandButton value="Limpar" styleClass="btn-primary btn-block"
-							actionListener="#instrutorController.limpar}"
+							actionListener="#{instrutorController.limpar}"
 							update="@form formDataTable" process="@this" />
 					</p:panelGrid>
-
-
 
 				</h:form>
 
 			</p:panel>
 			<p:spacer />
 			<p:dialog header="Modal Dialog" widgetVar="dlg" modal="true"
-				height="500">
+				height="400">
 				<h:form>
 					<p:inputText id="itPesquisa"
 						value="#{instrutorController.pesquisa}" />
@@ -202,11 +180,12 @@
 				</h:form>
 				<p:panel styleClass="card no-border" toggleable="true"
 					toggleSpeed="300">
+
 					<h:form id="formDataTable">
-						<p:dataTable styleClass="box-primary" var="pessoa"
+						<p:dataTable styleClass="box-primary" var="instrutor"
 							value="#{instrutorController.listaInstrutor}">
 							<f:facet name="header">
-								<h:outputText value="Lista de Instrutores Cadastrados" />
+								<h:outputText value="Lista de instrutors Cadastradas" />
 							</f:facet>
 							<p:column headerText="Id">
 								<h:outputText value="#{instrutor.id}" />
@@ -216,13 +195,13 @@
 								<p:commandLink value="#{instrutor.nome}"
 									oncomplete="PF('dlg').hide();">
 									<f:ajax render="formDados" execute="@this" />
-									<f:setPropertyActionListener value="#{pessoa}"
+									<f:setPropertyActionListener value="#{instrutor}"
 										target="#{instrutorController.entity}" />
 								</p:commandLink>
 							</p:column>
 
-							<p:column headerText="Sexo">
-								<h:outputText value="#{instrutor.sexo}" />
+							<p:column headerText="CPF">
+								<h:outputText value="#{instrutor.cpf}" />
 							</p:column>
 
 							<p:column headerText="Data de Nascimento">
@@ -231,18 +210,14 @@
 								</h:outputText>
 							</p:column>
 
-							<p:column headerText="Telefone">
-								<h:outputText value="#{instrutor.telefone}" />
+							<p:column headerText="Sexo">
+								<h:outputText value="#{instrutor.sexo}" />
 							</p:column>
+
 
 							<p:column headerText="Email">
 								<h:outputText value="#{instrutor.email}" />
 							</p:column>
-
-							<p:column headerText="Senha">
-								<h:outputText value="#{instrutor.senha}" />
-							</p:column>
-
 
 							<p:column headerText="Endereco">
 								<p:commandLink for="itEndereco" value="	Visualizar"
@@ -250,48 +225,47 @@
 									style="color:blue; text-decoration: underline;" />
 
 							</p:column>
-
-
-
-
 						</p:dataTable>
+					
 					</h:form>
+					
 				</p:panel>
+				
+				
 			</p:dialog>
-
-
+			
 			<p:dialog header="Modal Dialog" widgetVar="dlgEndereco" modal="true"
 				height="400">
 
-				<p:dataTable styleClass="box-primary" var="endereco"
-					value="#{enderecoController.listaEndereco}">
+				<p:dataTable styleClass="box-primary" var="instrutor"
+					value="#{instrutorController.listaInstrutor}">
 					<f:facet name="header">
 						<h:outputText value="Endereco" />
 					</f:facet>
 					<p:column headerText="CEP">
-						<h:outputText value="#{instrutor.endereco.cep}" />
+						<h:outputText value="#{instrutor.cep}" />
 					</p:column>
 
 
 					<p:column headerText="Logradouro">
-						<h:outputText value="#{intrutor.endereco.logradouro}" />
+						<h:outputText value="#{intrutor.logradouro}" />
 					</p:column>
 
 					<p:column headerText="Numero">
-						<h:outputText value="#{endereco.numero}" />
+						<h:outputText value="#{intrutor.numero}" />
 
 					</p:column>
 
 					<p:column headerText="Complemento">
-						<h:outputText value="#{endereco.complemento}" />
+						<h:outputText value="#{intrutor.complemento}" />
 					</p:column>
 
 					<p:column headerText="Cidade">
-						<h:outputText value="#{endereco.cidade}" />
+						<h:outputText value="#{intrutor.cidade}" />
 					</p:column>
 
 					<p:column headerText="Estado">
-						<h:outputText value="#{endereco.estado}" />
+						<h:outputText value="#{intrutor.estado}" />
 					</p:column>
 
 				</p:dataTable>
@@ -300,6 +274,7 @@
 
 			</p:dialog>
 
+			
 
 		</div>
 	</ui:define>
@@ -307,6 +282,6 @@
 		<h:outputText value="2018 - WEBGYM - Todos os direitos reservados." />
 	</ui:define>
 
-
 </ui:composition>
+
 </html>

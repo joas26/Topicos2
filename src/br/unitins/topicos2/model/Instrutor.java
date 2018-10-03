@@ -5,14 +5,18 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Instrutor extends DefaultEntity<Instrutor> {
@@ -28,7 +32,7 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 
 	private Sexo sexo;
 	
-	@Transient
+
 	private Date dataNascimento;
 
 	private String telefone;
@@ -36,10 +40,90 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 	private String email;
 
 	private String senha;
+	
+	private String estado;
 
+	private String cidade;
+
+	private String cep;
+
+	private String logradouro;
+
+	private String complemento;
+
+	private String numero;
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
+	public String getCidade() {
+		return cidade;
+	}
+
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+
+	public String getCep() {
+		return cep;
+	}
+
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+
+	public String getNumero() {
+		return numero;
+	}
+
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	@OneToOne
 	private Endereco endereco;
 	
-	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	private Perfil perfil;
 	
 
@@ -71,7 +155,7 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 
 
 	public Instrutor(String cpf, String nome, Sexo sexo, Date dataNascimento, String telefone, String email,
-			String senha, Endereco endereco, Perfil perfil) {
+			String senha, Perfil perfil) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
@@ -80,7 +164,6 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 		this.telefone = telefone;
 		this.email = email;
 		this.senha = senha;
-		this.endereco = endereco;
 		this.perfil = perfil;
 	}
 
@@ -135,13 +218,7 @@ public class Instrutor extends DefaultEntity<Instrutor> {
 		this.senha = senha;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
+	
 
 }

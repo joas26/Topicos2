@@ -1,6 +1,8 @@
 package br.unitins.topicos2.model;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+
 
 @Entity
 public class Endereco extends DefaultEntity<Endereco> {

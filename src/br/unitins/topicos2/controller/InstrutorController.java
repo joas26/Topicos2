@@ -28,7 +28,7 @@ public class InstrutorController extends Controller<Instrutor> {
 	
 	private List<Instrutor> listaInstrutor = null;
 	
-	private Endereco endereco;
+	private Endereco endereco = null;
 	
 	private List<Perfil> perfis = null;
 	
@@ -37,9 +37,11 @@ public class InstrutorController extends Controller<Instrutor> {
 	public Instrutor getEntity() {
 		if (entity == null)
 			entity = new Instrutor();
-			new Endereco();
+			
 		return entity;
 	}
+	
+	
 
 	@PostConstruct
 	public void inicializar() {
@@ -84,6 +86,18 @@ public class InstrutorController extends Controller<Instrutor> {
 
 	public void setPesquisa(String pesquisa) {
 		this.pesquisa = pesquisa;
+	}
+
+
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 }
