@@ -17,7 +17,7 @@
 			<div style="position: absolute; top: 100px; left: 80%" >
 				<p:growl autoUpdate="true" />
 			</div>
-			<h2 class="align-center">.: Cadastro de Pessoa :.</h2>
+			<h2 class="align-center">.: Cadastro de Alunos :.</h2>
 			<div class="ui-g-12">
 				<p:panel styleClass="card no-border" toggleable="true"
 					toggleSpeed="300">
@@ -46,16 +46,29 @@
 									<p:calendar value="#{pessoaController.entity.dataNascimento}"
 										pattern="dd/MM/yyyy" mask="true" locale="pt_BR" />
 								</h:panelGroup>
-		
+								
+								<h:panelGroup>
+									<p:outputLabel value="CPF:" />
+									<p:inputText id="itCpf" value="#{AlunoController.entity.cpf}" />
+								</h:panelGroup>
+								
 								<h:panelGroup>
 									<p:outputLabel value="Endereco:" />
 									<p:inputText value="#{pessoaController.entity.endereco}" >
 		
 									</p:inputText>
 								</h:panelGroup>
+								
+								
 								<h:panelGroup>
 									<p:outputLabel value="Email:" />
-									<p:inputText id="itEmail" value="#{pessoaController.entity.email}" />
+									<p:inputText id="itEmail" value="#{AlunoController.entity.email}" />
+								</h:panelGroup>
+								<h:panelGroup>
+									<p:outputLabel value="Senha:" />
+									<p:inputText value="#{AlunoController.entity.senha}" >
+		
+									</p:inputText>
 								</h:panelGroup>
 								<p:spacer />
 							</p:panelGrid>

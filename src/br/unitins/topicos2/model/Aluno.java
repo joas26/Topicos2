@@ -3,26 +3,24 @@ package br.unitins.topicos2.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Transient;
 
 @Entity
 public class Aluno extends DefaultEntity<Aluno> {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 2285939380429834146L;
 
 	
-	private Date dataNascimento;
 	
-	private Integer id;
+	
 	private String nome;
 	private String cpf;
 	private String telefone;
 	private String email;
 	private String senha;
-	
+	private Date dataNascimento;
 	
 	public Aluno() {
 		
@@ -35,12 +33,7 @@ public class Aluno extends DefaultEntity<Aluno> {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 	public String getNome() {
 		return nome;
 	}
