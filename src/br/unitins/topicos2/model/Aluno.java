@@ -3,6 +3,8 @@ package br.unitins.topicos2.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 
 @Entity
@@ -16,29 +18,144 @@ public class Aluno extends DefaultEntity<Aluno> {
 	
 	private String nome;
 	private String cpf;
+	private Sexo sexo;
+	
 	private String telefone;
 	private String email;
 	private String senha;
 	private Date dataNascimento;
 	
+	private String estado;
+
+	private String cidade;
+
+	private String cep;
+
+	private String logradouro;
+
+	private String complemento;
+
+	private String numero;
+	
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+
+
+	@Enumerated(EnumType.STRING)
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
+
+
+	public String getCidade() {
+		return cidade;
+	}
+
+
+
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+
+
+
+	public String getCep() {
+		return cep;
+	}
+
+
+
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+
+
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+
+
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+
+
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+
+
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+
+
+
+	public String getNumero() {
+		return numero;
+	}
+
+
+
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+
+
+
 	public Aluno() {
 		
 	}
 	
 	
 	
-	
-	public Aluno(String nome, String cpf, String telefone, String email, String senha, Date dataNascimento) {
+
+
+
+	public Aluno(String nome, String cpf, Sexo sexo, String telefone, String email, String senha, Date dataNascimento,
+			String estado, String cidade, String cep, String logradouro, String complemento, String numero) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
+		this.sexo = sexo;
 		this.telefone = telefone;
 		this.email = email;
 		this.senha = senha;
 		this.dataNascimento = dataNascimento;
+		this.estado = estado;
+		this.cidade = cidade;
+		this.cep = cep;
+		this.logradouro = logradouro;
+		this.complemento = complemento;
+		this.numero = numero;
 	}
-
-
 
 
 	public Date getDataNascimento() {

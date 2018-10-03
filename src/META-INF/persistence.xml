@@ -3,10 +3,12 @@
 	<persistence-unit name="Topicos2">
 		
 		<class>br.unitins.topicos2.model.Aluno</class>
+		<class>br.unitins.topicos2.model.Avaliacao</class>
 		<class>br.unitins.topicos2.model.DefaultEntity</class>
 		<class>br.unitins.topicos2.model.Endereco</class>
 		<class>br.unitins.topicos2.model.Equipamento</class>
 		<class>br.unitins.topicos2.model.Instrutor</class>
+		<class>br.unitins.topicos2.model.Mensalidade</class>
 		<class>br.unitins.topicos2.model.Pessoa</class>
 	
 	

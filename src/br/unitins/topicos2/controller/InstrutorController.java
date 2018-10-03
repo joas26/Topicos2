@@ -28,6 +28,7 @@ public class InstrutorController extends Controller<Instrutor> {
 	
 	private List<Instrutor> listaInstrutor = null;
 	
+	
 	private Endereco endereco = null;
 	
 	private List<Perfil> perfis = null;
@@ -47,6 +48,7 @@ public class InstrutorController extends Controller<Instrutor> {
 	public void inicializar() {
 		this.perfis = Arrays.asList(Perfil.values());
 		this.sexos = Arrays.asList(Sexo.values());
+		
 	}
 	
 	@Override

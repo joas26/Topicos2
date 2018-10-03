@@ -19,7 +19,7 @@
 		<div style="position: absolute; top: 100px; left: 80%">
 			<p:growl autoUpdate="true" />
 		</div>
-		<h2 class="align-center">.: Cadastro de instrutors :.</h2>
+		<h3 class="align-center"> Cadastro de instrutor </h3>
 		<div class="ui-g-12">
 			<p:panel styleClass="card no-border" toggleable="true"
 				toggleSpeed="300">
@@ -33,14 +33,15 @@
 							styleClass="ui-fluid card">
 
 							<h:panelGroup>
-								<p:commandLink for="itNome" value="Nome:"
-									onclick="PF('dlg').show();" process="@this"
-									style="color:blue; text-decoration: underline;" />
-								<p:inputText id="itNome"
-									value="#{instrutorController.entity.nome}" required="true">
-									<p:focus for="itNome" />
-								</p:inputText>
-							</h:panelGroup>
+									<p:commandLink for="itNome" 
+											value="Nome:" 
+											onclick="PF('dlg').show();"
+											process="@this"
+											style="color:blue; text-decoration: underline;"/>
+									<p:inputText id="itNome" value="#{instrutorController.entity.nome}" required="true">
+										<p:focus for="itNome" />								
+									</p:inputText>
+								</h:panelGroup>
 
 							<h:panelGroup>
 								<p:outputLabel value="CPF:" />
@@ -50,7 +51,7 @@
 
 
 							<h:panelGroup>
-								<p:outputLabel value="Data de Nascimento:" />
+								<h:outputLabel value="Data de Nascimento:" />
 								<p:calendar value="#{instrutorController.entity.dataNascimento}"
 									pattern="dd/MM/yyyy" mask="true" locale="pt_BR" />
 							</h:panelGroup>
@@ -58,14 +59,14 @@
 
 
 							<h:panelGroup>
-								<p:outputLabel value="Sexo:" for="sexo" />
-								<p:selectOneMenu id="sexo"
+								<h:outputLabel value="Sexo:" for="sexo" />
+								<h:selectOneMenu id="sexo"
 									value="#{instrutorController.entity.sexo}">
 									<f:selectItem itemlabel="Selecione o Sexo" />
 									<f:selectItems value="#{instrutorController.sexos}" var="sexo"
 										itemLabel="#{sexo}" itemValue="#{sexo}" />
 
-								</p:selectOneMenu>
+								</h:selectOneMenu>
 
 							</h:panelGroup>
 
@@ -114,8 +115,20 @@
 
 
 							</h:panelGroup>
+							
+							<h:panelGroup>
+								<h:outputLabel value="Perfil:" for="perfil" />
+								<h:selectOneMenu id="perfil"
+									value="#{instrutorController.entity.perfil}">
+									<f:selectItem itemlabel="Selecione o Sexo" />
+									<f:selectItems value="#{instrutorController.perfis}" var="perfil"
+										itemLabel="#{perfil}" itemValue="#{perfil}" />
 
+								</h:selectOneMenu>
 
+							</h:panelGroup>
+
+							
 
 							<h:panelGroup>
 								<p:outputLabel value="Email:" />
@@ -248,24 +261,24 @@
 
 
 					<p:column headerText="Logradouro">
-						<h:outputText value="#{intrutor.logradouro}" />
+						<h:outputText value="#{instrutor.logradouro}" />
 					</p:column>
 
 					<p:column headerText="Numero">
-						<h:outputText value="#{intrutor.numero}" />
+						<h:outputText value="#{instrutor.numero}" />
 
 					</p:column>
 
 					<p:column headerText="Complemento">
-						<h:outputText value="#{intrutor.complemento}" />
+						<h:outputText value="#{instrutor.complemento}" />
 					</p:column>
 
 					<p:column headerText="Cidade">
-						<h:outputText value="#{intrutor.cidade}" />
+						<h:outputText value="#{instrutor.cidade}" />
 					</p:column>
 
 					<p:column headerText="Estado">
-						<h:outputText value="#{intrutor.estado}" />
+						<h:outputText value="#{instrutor.estado}" />
 					</p:column>
 
 				</p:dataTable>

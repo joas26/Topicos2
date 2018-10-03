@@ -18,32 +18,21 @@
 	 	<div class="box header">
 			<h1 >Sistema WEBGYM</h1>
 	 	</div>
-		<div class="box sidebar" style="text-align: center;">
+		<div class="box sidebar" style="text-align: north;">
 			<ui:insert name="menu">
-				<p:tabMenu activeIndex="#{param.i}">
-
-			<p:menuitem value="Aluno" outcome="/cadastropessoa2.xhtml"
-				icon="ui-icon-person">
-				<f:param name="i" value="0" />
-			</p:menuitem>
-			<p:menuitem value="Instrutores" outcome="/cadastroinstrutor.xhtml"
-				icon="ui-icon-person">
-				<f:param name="i" value="1" />
-			</p:menuitem>
-			<p:menuitem value="Treino" outcome="/cadastropessoa2.xhtml"
-				icon="ui-icon-search">
-				<f:param name="i" value="2" />
-			</p:menuitem>
-			<p:menuitem value="Equipamento" outcome="/cadastroequipamento.xhtml"
-				icon="ui-icon-document">
-				<f:param name="i" value="3" />
-			</p:menuitem>
-			<p:menuitem value="Mensalidades" outcome="/cadastropessoa2.xhtml"
-				icon="ui-icon-calculator">
-				<f:param name="i" value="4" />
-			</p:menuitem>
-
-		</p:tabMenu>
+			
+			<ul>
+		<li class="selected-item"><a>Início</a></li>
+		<li><a href="cadastroAluno.xhtml">Alunos</a></li>
+		<li><a href="cadastroinstrutor.xhtml">Instrutor</a></li>
+		<li><a href="cadastroAluno.xhtml">Treino</a></li>
+		<li><a href="cadastroAvaliacao.xhtml">Avaliação</a></li>
+		<li><a href="cadastroMensalidade.xhtml">Mensalidade</a></li>
+		
+		
+			</ul>
+			
+			
 			</ui:insert>
 		</div>
 		<div class="box content">

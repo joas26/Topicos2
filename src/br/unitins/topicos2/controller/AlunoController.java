@@ -1,12 +1,16 @@
 package br.unitins.topicos2.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import br.unitins.topicos2.model.Aluno;
+import br.unitins.topicos2.model.Perfil;
+import br.unitins.topicos2.model.Sexo;
 import br.unitins.topicos2.repository.AlunoRepository;
 
 
@@ -24,6 +28,10 @@ public class AlunoController extends Controller<Aluno> {
 
 	private List<Aluno> listaAluno = null;
 	
+	private List<Aluno> listaNomeAluno = null;
+	
+	private List<Sexo> sexos = null;
+	
 	@Override
 	public Aluno getEntity() {
 		
@@ -32,10 +40,24 @@ public class AlunoController extends Controller<Aluno> {
 		return entity;
 	}
 	
+	public List<Sexo> getSexos() {
+		return sexos;
+	}
+
+	public void setSexos(List<Sexo> sexos) {
+		this.sexos = sexos;
+	}
+
 	@Override
 	public void limpar() {
 		setEntity(null);
 		listaAluno = null;
+	}
+	
+	@PostConstruct
+	public void inicializar() {
+		this.sexos = Arrays.asList(Sexo.values());
+		
 	}
 	
 	public void pesquisar() {
@@ -51,6 +73,8 @@ public class AlunoController extends Controller<Aluno> {
 		return listaAluno;
 	}
 
+	
+	
 
 	public String getPesquisa() {
 		return pesquisa;

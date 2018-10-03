@@ -20,7 +20,7 @@ public class AlunoRepository extends Repository<Aluno> {
 	@SuppressWarnings("unchecked")
 	public List<Aluno> getAlunos(String nome) {
 		
-		Query query = (Query) getEntityManager().createQuery("Select p From Alunos p WHERE p.nome LIKE :nome Order by p.nome ");
+		Query query = (Query) getEntityManager().createQuery("Select p From Aluno p WHERE p.nome LIKE :nome Order by p.nome ");
 		query.setParameter("nome","%" + nome +"%");
 		
 		List<Aluno> lista = query.getResultList();
