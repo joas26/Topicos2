@@ -8,7 +8,7 @@ import javax.inject.Named;
 
 import br.unitins.topicos2.model.Aluno;
 import br.unitins.topicos2.repository.AlunoRepository;
-import br.unitins.topicos2.repository.PessoaRepository;
+
 
 @Named
 @ViewScoped

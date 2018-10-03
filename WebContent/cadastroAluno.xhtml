@@ -36,25 +36,25 @@
 											onclick="PF('dlg').show();"
 											process="@this"
 											style="color:blue; text-decoration: underline;"/>
-									<p:inputText id="itNome" value="#{pessoaController.entity.nome}" required="true">
+									<p:inputText id="itNome" value="#{alunoController.entity.nome}" required="true">
 										<p:focus for="itNome" />								
 									</p:inputText>
 								</h:panelGroup>
 		
 								<h:panelGroup>
 									<p:outputLabel value="Data de Nascimento:" />
-									<p:calendar value="#{pessoaController.entity.dataNascimento}"
+									<p:calendar value="#{alunoController.entity.dataNascimento}"
 										pattern="dd/MM/yyyy" mask="true" locale="pt_BR" />
 								</h:panelGroup>
 								
 								<h:panelGroup>
 									<p:outputLabel value="CPF:" />
-									<p:inputText id="itCpf" value="#{AlunoController.entity.cpf}" />
+									<p:inputText id="itCpf" value="#{alunoController.entity.cpf}" />
 								</h:panelGroup>
 								
 								<h:panelGroup>
-									<p:outputLabel value="Endereco:" />
-									<p:inputText value="#{pessoaController.entity.endereco}" >
+									<p:outputLabel value="Telefone:" />
+									<p:inputText value="#{alunoController.entity.telefone}" >
 		
 									</p:inputText>
 								</h:panelGroup>
@@ -62,11 +62,11 @@
 								
 								<h:panelGroup>
 									<p:outputLabel value="Email:" />
-									<p:inputText id="itEmail" value="#{AlunoController.entity.email}" />
+									<p:inputText id="itEmail" value="#{alunoController.entity.email}" />
 								</h:panelGroup>
 								<h:panelGroup>
 									<p:outputLabel value="Senha:" />
-									<p:inputText value="#{AlunoController.entity.senha}" >
+									<p:inputText value="#{alunoController.entity.senha}" >
 		
 									</p:inputText>
 								</h:panelGroup>
@@ -82,18 +82,18 @@
 							layout="grid" styleClass="ui-fluid  ">
 		
 							<p:commandButton value="Incluir" styleClass="btn-primary btn-block"
-								disabled="#{pessoaController.entity.id != null}"
-								actionListener="#{pessoaController.incluir}"
+								disabled="#{alunoController.entity.id != null}"
+								actionListener="#{alunoController.incluir}"
 								update="@form formDataTable" process="@this pgDados" />
 		
 							<p:commandButton value="Alterar" styleClass="btn-primary btn-block"
-								disabled="#{pessoaController.entity.id == null}"
-								actionListener="#{pessoaController.alterar}"
+								disabled="#{alunoController.entity.id == null}"
+								actionListener="#{alunoController.alterar}"
 								update="@form formDataTable" process="@this pgDados" />
 		
 							<p:commandButton value="Excluir" styleClass="btn-primary btn-block"
-								disabled="#{pessoaController.entity.id == null}"
-								actionListener="#{pessoaController.remover}"
+								disabled="#{alunoController.entity.id == null}"
+								actionListener="#{alunoController.remover}"
 								update="@form formDataTable" process="@this pgDados">
 								<p:confirm header="Confirmação" 
 											message="Deseja realmente excluir?" 
@@ -101,7 +101,7 @@
 							</p:commandButton>
 
 							<p:commandButton value="Limpar" styleClass="btn-primary btn-block"
-								actionListener="#{pessoaController.limpar}"
+								actionListener="#{alunoController.limpar}"
 								update="@form formDataTable" process="@this" />
 						</p:panelGrid>
 		
@@ -113,45 +113,42 @@
 				<p:spacer />
 				<p:dialog header="Modal Dialog" widgetVar="dlg" modal="true" height="400">
 					<h:form>
-						<p:inputText id="itPesquisa" value="#{pessoaController.pesquisa}"/>
+						<p:inputText id="itPesquisa" value="#{alunoController.pesquisa}"/>
 						<p:commandButton value="Pesquisar" 
-							actionListener="#{pessoaController.pesquisar}"
+							actionListener="#{alunoController.pesquisar}"
 							process="@this itPesquisa" 
 							update="formDataTable"/>
 					</h:form>
 					<p:panel styleClass="card no-border" toggleable="true"
 						toggleSpeed="300">
 						<h:form id="formDataTable">
-							<p:dataTable styleClass="box-primary" var="pessoa"
-								value="#{pessoaController.listaPessoa}">
+							<p:dataTable styleClass="box-primary" var="aluno"
+								value="#{alunoController.listaAluno}">
 								<f:facet name="header">
-									<h:outputText value="Lista de Pessoas Cadastradas" />
+									<h:outputText value="Lista de alunos Cadastradas" />
 								</f:facet>
 								<p:column headerText="Id">
-									<h:outputText value="#{pessoa.id}" />
+									<h:outputText value="#{aluno.id}" />
 								</p:column>
 			
 								<p:column headerText="Nome">
-									<p:commandLink value="#{pessoa.nome}" 
+									<p:commandLink value="#{aluno.nome}" 
 											oncomplete="PF('dlg').hide();">
 										<f:ajax render="formDados" execute="@this" />
-										<f:setPropertyActionListener value="#{pessoa}"
-											target="#{pessoaController.entity}" />
+										<f:setPropertyActionListener value="#{aluno}"
+											target="#{alunoController.entity}" />
 									</p:commandLink>
 								</p:column>
 			
 								<p:column headerText="Data de Nascimento">
-									<h:outputText value="#{pessoa.dataNascimento}">
+									<h:outputText value="#{aluno.dataNascimento}">
 										<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" locale="pt_BR" />
 									</h:outputText>
 								</p:column>
 			
-								<p:column headerText="Endereço">
-									<h:outputText value="#{pessoa.endereco}" />
-								</p:column>
 			
 								<p:column headerText="Email">
-									<h:outputText value="#{pessoa.email}" />
+									<h:outputText value="#{aluno.email}" />
 								</p:column>
 							</p:dataTable>
 						</h:form>

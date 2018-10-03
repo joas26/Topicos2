@@ -3,8 +3,7 @@ package br.unitins.topicos2.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+
 
 @Entity
 public class Aluno extends DefaultEntity<Aluno> {
@@ -27,6 +26,21 @@ public class Aluno extends DefaultEntity<Aluno> {
 	}
 	
 	
+	
+	
+	public Aluno(String nome, String cpf, String telefone, String email, String senha, Date dataNascimento) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.email = email;
+		this.senha = senha;
+		this.dataNascimento = dataNascimento;
+	}
+
+
+
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}

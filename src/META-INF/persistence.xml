@@ -21,7 +21,7 @@
 				value="topicos2" />
 				
 			<property name="javax.persistence.jdbc.password"
-				value="banco" />
+				value="123456" />
 		
 	
 			<property name="eclipselink.ddl-generation"
